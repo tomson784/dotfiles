@@ -1,3 +1,3 @@
-# raspi
+# dotfiles
 
-My Raspberry Pi development record
+My dotfiles config
