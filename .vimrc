@@ -1,16 +1,29 @@
 "dein Scripts-----------------------------
+
+let s:dein_dir = expand("$HOME/dotfiles/dein")
+let s:dein_repo_dir = s:dein_dir . "/repos/github.com/Shougo/dein.vim"
+
 if &compatible
   set nocompatible               " Be iMproved
 endif
 
-" Required:
-set runtimepath+=$HOME/.vim/dein/repos/github.com/Shougo/dein.vim
+if !isdirectory(s:dein_repo_dir)
+  echo "install dein.vim..."
+  execute "!git clone git://github.com/Shougo/dein.vim" s:dein_repo_dir 
+  execute "!touch -m " . s:dein_dir . "/dein.toml"
+  execute "!touch -m " . s:dein_dir . "/dein_lazy.toml"
+endif
+
+execute "set runtimepath^=" . s:dein_repo_dir
 
 " Required:
-if dein#load_state('$HOME/.vim/dein')
-  call dein#begin('$HOME/.vim/dein')
+"set runtimepath+=s:dein_repo_dir
 
-  call dein#add('$HOME/.vim/dein/repos/github.com/Shougo/dein.vim')
+" Required:
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+
+  call dein#add(s:dein_repo_dir)
   " 追加したいプラグインを入れていく
   "以下２つは例
   call dein#add('scrooloose/nerdtree')
