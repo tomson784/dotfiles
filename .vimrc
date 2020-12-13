@@ -1,7 +1,9 @@
 "dein Scripts-----------------------------
 
-let s:dein_dir = expand("$HOME/dotfiles/dein")
-let s:dein_repo_dir = s:dein_dir . "/repos/github.com/Shougo/dein.vim"
+let g:dein_dir = expand("$HOME/dotfiles/dein")
+let s:toml = g:dein_dir . "/dein.toml"
+let s:lazy_toml = g:dein_dir . "/dein_lazy.toml"
+let s:dein_repo_dir = g:dein_dir . "/repos/github.com/Shougo/dein.vim"
 
 if &compatible
   set nocompatible               " Be iMproved
@@ -10,8 +12,8 @@ endif
 if !isdirectory(s:dein_repo_dir)
   echo "install dein.vim..."
   execute "!git clone git://github.com/Shougo/dein.vim" s:dein_repo_dir 
-  execute "!touch -m " . s:dein_dir . "/dein.toml"
-  execute "!touch -m " . s:dein_dir . "/dein_lazy.toml"
+  execute "!touch -m " . g:dein_dir . "/dein.toml"
+  execute "!touch -m " . g:dein_dir . "/dein_lazy.toml"
 endif
 
 execute "set runtimepath^=" . s:dein_repo_dir
@@ -20,13 +22,15 @@ execute "set runtimepath^=" . s:dein_repo_dir
 "set runtimepath+=s:dein_repo_dir
 
 " Required:
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
+if dein#load_state(g:dein_dir)
+  call dein#begin(g:dein_dir)
 
-  call dein#add(s:dein_repo_dir)
-  " 追加したいプラグインを入れていく
-  "以下２つは例
-  call dein#add('scrooloose/nerdtree')
+  call dein#add('Shougo/dein.vim')
+
+  " Load plugins from toml
+  call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
   call dein#add('raphamorim/lucario')
   "構文チェックを行う。
   call dein#add('scrooloose/syntastic')
@@ -68,8 +72,5 @@ set number
 " Remove search highlights
 set hlsearch       
 
-" [https://www.toumasu-program.net/entry/2019/01/28/105352]
-" Show directory tree with Ctrl+n
-map <C-n> :NERDTreeToggle<CR>
 
 "End dein Scripts-------------------------
