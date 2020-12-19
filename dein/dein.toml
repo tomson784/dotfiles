@@ -9,3 +9,6 @@ hook_add = '''
   " 起動時にNERDTreeを表示
   autocmd vimenter * NERDTree
 '''
+
+[[plugins]]
+repo = 'tomasr/molokai'

@@ -41,6 +41,7 @@ if dein#load_state(g:dein_dir)
   "インデントの色付け
   call dein#add('Yggdroot/indentLine')
 
+
   call dein#add('justmao945/vim-clang')
   " set clang options for vim-clang
   let g:clang_c_options = '-std=c11'
