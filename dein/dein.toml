@@ -8,7 +8,36 @@ hook_add = '''
   let g:NERDTreeShowBookmarks = 1
   " 起動時にNERDTreeを表示
   autocmd vimenter * NERDTree
+  let g:NERDTreeShowHidden = 1
 '''
 
 [[plugins]]
 repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'raphamorim/lucario'
+
+[[plugins]]
+# 構文チェックを行う。
+repo = 'scrooloose/syntastic'
+
+[[plugins]]
+# ()を補間する。
+repo = 'Townk/vim-autoclose'
+
+[[plugins]]
+# () 色付け:
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+# インデントの色付け
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'justmao945/vim-clang'
+hook_add = '''
+  " set clang options for vim-clang
+  let g:clang_c_options = '-std=c11'
+  let g:clang_cpp_options = '-std=c++1z -stdlib=libc++ --pedantic-errors'
+'''
+

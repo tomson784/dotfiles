@@ -31,22 +31,6 @@ if dein#load_state(g:dein_dir)
   call dein#load_toml(s:toml, {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
 
-  call dein#add('raphamorim/lucario')
-  "構文チェックを行う。
-  call dein#add('scrooloose/syntastic')
-  "()を補間する。
-  call dein#add('Townk/vim-autoclose')
-  "() 色付け:
-  call dein#add('itchyny/lightline.vim')
-  "インデントの色付け
-  call dein#add('Yggdroot/indentLine')
-
-
-  call dein#add('justmao945/vim-clang')
-  " set clang options for vim-clang
-  let g:clang_c_options = '-std=c11'
-  let g:clang_cpp_options = '-std=c++1z -stdlib=libc++ --pedantic-errors'
-
   " Required:
   call dein#end()
   call dein#save_state()
