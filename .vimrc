@@ -53,7 +53,7 @@ set expandtab
 set shiftwidth=4
 set number
 
-" search command list [http://kawatama.net/web/1341]
+" search command list 
 " Remove search highlights
 set hlsearch       
 

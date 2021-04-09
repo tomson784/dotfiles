@@ -1,7 +1,6 @@
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
-  " [https://www.toumasu-program.net/entry/2019/01/28/105352]
   " Show directory tree with Ctrl+n
   map <C-n> :NERDTreeToggle<CR>
   " 起動時にブックマーク表示
