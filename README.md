@@ -22,4 +22,5 @@ My dotfiles config
 | 垂直分割 | - |
 | 水平分割 | \ |
 | ペイン移動 | Shift + Arrow |
+| スクロール | [ + Arrow |
 
