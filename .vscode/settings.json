@@ -25,4 +25,13 @@
     "latex-workshop.latex.autoClean.run": "onBuilt",
     "latex-workshop.latex.autoBuild.run": "onFileChange",
     "latex-workshop.view.pdf.viewer": "tab",
+    
+    //////////////////////////////////////////////////////////////////////////////
+    
+    "window.zoomLevel": -1,
+    // "workbench.iconTheme": "vscode-icons",
+    "editor.renderWhitespace": "all",
+    "editor.renderControlCharacters": true,
+    "window.restoreWindows": "none",
+    "editor.wordWrap": "on",
 }
