@@ -11,7 +11,7 @@ endif
 
 if !isdirectory(s:dein_repo_dir)
   echo "install dein.vim..."
-  execute "!git clone git://github.com/Shougo/dein.vim" s:dein_repo_dir 
+  execute "!git clone https://github.com/Shougo/dein.vim" s:dein_repo_dir 
   execute "!touch -m " . g:dein_dir . "/dein.toml"
   execute "!touch -m " . g:dein_dir . "/dein_lazy.toml"
 endif
