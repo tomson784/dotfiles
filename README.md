@@ -121,6 +121,21 @@ vim 起動時に NERDTree が自動で開きます。ウィンドウ間の移動
 | 次のバッファへ | `:bn` |
 | 前のバッファへ | `:bp` |
 
+### which-key（ショートカット一覧ポップアップ）
+
+ノーマルモードで `Space` を押すと、画面下に押せるキーと説明が一覧表示されます。
+
+| キー | 動作 |
+|--|--|
+| `Space` | which-key 起動 |
+| `Space` → `n` | ファイルツリー 表示/非表示 |
+| `Space` → `s` | 保存 |
+| `Space` → `q` | 終了 |
+| `Space` → `Q` | 強制終了 |
+| `Space` → `x` | 保存して終了 |
+| `Space` → `h` | 検索ハイライト解除 |
+| `Space` → `w` | ウィンドウ操作サブメニュー（`w`/`h`/`l`/`s`/`v`） |
+
 ### プラグイン
 
 [dein.vim](https://github.com/Shougo/dein.vim) で管理しています。初回起動時に自動インストールされます。
@@ -128,12 +143,39 @@ vim 起動時に NERDTree が自動で開きます。ウィンドウ間の移動
 | プラグイン | 説明 |
 |--|--|
 | [NERDTree](https://github.com/scrooloose/nerdtree) | ファイルツリー表示 (`Ctrl+n`) |
+| [vim-which-key](https://github.com/liuchengxu/vim-which-key) | ショートカット一覧ポップアップ (`Space`) |
 | [syntastic](https://github.com/scrooloose/syntastic) | 構文チェック |
 | [vim-autoclose](https://github.com/Townk/vim-autoclose) | 括弧・クォートの自動補完 |
 | [lightline.vim](https://github.com/itchyny/lightline.vim) | ステータスバー |
 | [indentLine](https://github.com/Yggdroot/indentLine) | インデントの可視化 |
 | [vim-clang](https://github.com/justmao945/vim-clang) | C/C++ の補完 (C11 / C++17) |
 | [molokai](https://github.com/tomasr/molokai) / [lucario](https://github.com/raphamorim/lucario) | カラースキーム |
+
+### セキュリティ（サプライチェーン対策）
+
+dein はデフォルトブランチの最新コミットを取得するため、リポジトリが乗っ取られると `:call dein#update()` 実行時に悪意あるコードが混入するリスクがあります。
+
+**対策として `dein.toml` の全プラグインにコミットハッシュを固定しています。**
+
+| プラグイン | メンテナンス状況 | 備考 |
+|--|--|--|
+| scrooloose/nerdtree | 活発 | |
+| itchyny/lightline.vim | 活発 | |
+| Yggdroot/indentLine | 活発 | |
+| liuchengxu/vim-which-key | 活発 | |
+| scrooloose/syntastic | 更新少ない | |
+| tomasr/molokai | 数年更新なし | 色設定のみで影響小 |
+| raphamorim/lucario | 数年更新なし | 色設定のみで影響小 |
+| Townk/vim-autoclose | 長期放置 | 要注意・将来的に代替検討 |
+| justmao945/vim-clang | 更新少ない | |
+
+**プラグイン更新時のルール**
+
+| 操作 | 対応 |
+|--|--|
+| `:call dein#update()` で更新するとき | 差分を確認してから `dein.toml` の `rev` を更新する |
+| 新しいプラグインを追加するとき | インストール後に `rev` にコミットハッシュを記入する |
+| vim-which-key の初回インストール後 | `git -C ~/dotfiles/dein/repos/github.com/liuchengxu/vim-which-key rev-parse HEAD` でハッシュを確認して `rev` に記入する |
 
 ---
 
@@ -154,6 +196,10 @@ prefix キーは **`Ctrl + b`** です。
 | ウィンドウ切り替え | `prefix` + `n` / `p` |
 | セッション一覧 | `prefix` + `s` |
 | tmux 起動（分割済み） | `tmux_start` |
+
+### which-key（ショートカット一覧ポップアップ）
+
+`prefix + /` でポップアップが開き、tmux のショートカット一覧が表示されます。`Enter` で閉じます。
 
 ### マウス操作
 

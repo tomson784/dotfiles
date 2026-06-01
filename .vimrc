@@ -46,6 +46,28 @@ if dein#check_install()
 endif
 
 
+" which-key settings
+let mapleader = "\<Space>"
+call which_key#register('<Space>', "g:which_key_map")
+nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
+
+let g:which_key_map = {}
+let g:which_key_map['n'] = [':NERDTreeToggle', 'ファイルツリー 表示/非表示']
+let g:which_key_map['s'] = [':w',   '保存']
+let g:which_key_map['q'] = [':q',   '終了']
+let g:which_key_map['Q'] = [':q!',  '強制終了']
+let g:which_key_map['x'] = [':wq',  '保存して終了']
+let g:which_key_map['h'] = [':nohl','検索ハイライト解除']
+let g:which_key_map['w'] = {
+    \ 'name': 'ウィンドウ',
+    \ 'w': ['<C-w>w', '次のウィンドウ'],
+    \ 'h': ['<C-w>h', '左のウィンドウ'],
+    \ 'l': ['<C-w>l', '右のウィンドウ'],
+    \ 's': ['<C-w>s', '横分割'],
+    \ 'v': ['<C-w>v', '縦分割'],
+    \ }
+
 set nobackup       " Do not back up files
 set tabstop=4      
 set autoindent
